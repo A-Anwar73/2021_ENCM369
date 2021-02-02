@@ -88,7 +88,7 @@ Promises:
 */
 void GpioSetup(void)
 {
-  
+    
   
 } /* end GpioSetup() */
 
