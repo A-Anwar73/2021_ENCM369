@@ -95,15 +95,15 @@ Promises:
 void UserAppRun(void)
 {
     u32 u32Counter = 0x00;
-    while(u32Counter<=400000)
-    {
-        u32Counter++;
-    }
     while(PORTA < 0xBF)
     {
+        while(u32Counter<=400000)
+        {
+            u32Counter++;
+        }
         PORTA = PORTA + 0x01;
     }
-    PORTA = 0x80;
+    PORTA &= 0x80;
 
 } /* end UserAppRun */
 
