@@ -2557,63 +2557,63 @@ Version 4.0 HI-TECH Software Intermediate Code
 "102
 [; ;user_app.c: 102:     {
 {
-"105
-[; ;user_app.c: 105:         while(u32Counter<=400000)
+"104
+[; ;user_app.c: 104:         while(u32Counter <= 400000)
 [e $U 2277  ]
 [e :U 2278 ]
-"106
-[; ;user_app.c: 106:         {
+"105
+[; ;user_app.c: 105:         {
 {
-"107
-[; ;user_app.c: 107:             u32Counter++;
+"106
+[; ;user_app.c: 106:             u32Counter++;
 [e ++ _u32Counter -> -> -> 1 `i `l `ul ]
-"108
-[; ;user_app.c: 108:         }
+"107
+[; ;user_app.c: 107:         }
 }
 [e :U 2277 ]
-"105
-[; ;user_app.c: 105:         while(u32Counter<=400000)
+"104
+[; ;user_app.c: 104:         while(u32Counter <= 400000)
 [e $ <= _u32Counter -> -> 400000 `l `ul 2278  ]
 [e :U 2279 ]
-"112
-[; ;user_app.c: 112:         u32Counter = 0x00;
+"110
+[; ;user_app.c: 110:         u32Counter = 0x00;
 [e = _u32Counter -> -> -> 0 `i `l `ul ]
-"117
-[; ;user_app.c: 117:         LATA += 0x01;
+"113
+[; ;user_app.c: 113:         LATA += 0x01;
 [e =+ _LATA -> -> 1 `i `Vuc ]
-"118
-[; ;user_app.c: 118:     }
+"114
+[; ;user_app.c: 114:     }
 }
 [e :U 2274 ]
 "101
 [; ;user_app.c: 101:     while(LATA < 0xBF)
 [e $ < -> _LATA `i -> 191 `i 2275  ]
 [e :U 2276 ]
-"122
-[; ;user_app.c: 122:     while(u32Counter <= 400000)
+"117
+[; ;user_app.c: 117:     while(u32Counter <= 400000)
 [e $U 2280  ]
 [e :U 2281 ]
-"123
-[; ;user_app.c: 123:     {
+"118
+[; ;user_app.c: 118:     {
 {
-"124
-[; ;user_app.c: 124:         u32Counter ++;
+"119
+[; ;user_app.c: 119:         u32Counter ++;
 [e ++ _u32Counter -> -> -> 1 `i `l `ul ]
-"125
-[; ;user_app.c: 125:     }
+"120
+[; ;user_app.c: 120:     }
 }
 [e :U 2280 ]
-"122
-[; ;user_app.c: 122:     while(u32Counter <= 400000)
+"117
+[; ;user_app.c: 117:     while(u32Counter <= 400000)
 [e $ <= _u32Counter -> -> 400000 `l `ul 2281  ]
 [e :U 2282 ]
-"127
-[; ;user_app.c: 127:     u32Counter = 0x00;
+"121
+[; ;user_app.c: 121:     u32Counter = 0x00;
 [e = _u32Counter -> -> -> 0 `i `l `ul ]
-"130
-[; ;user_app.c: 130:     LATA = 0x80;
+"124
+[; ;user_app.c: 124:     LATA = 0x80;
 [e = _LATA -> -> 128 `i `uc ]
-"133
-[; ;user_app.c: 133: }
+"127
+[; ;user_app.c: 127: }
 [e :UE 2273 ]
 }

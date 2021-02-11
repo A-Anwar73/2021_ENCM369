@@ -27322,29 +27322,23 @@ void UserAppRun(void)
     while(LATA < 0xBF)
     {
 
-
-        while(u32Counter<=400000)
+        while(u32Counter <= 400000)
         {
             u32Counter++;
         }
 
 
-
         u32Counter = 0x00;
-
-
 
 
         LATA += 0x01;
     }
 
 
-
     while(u32Counter <= 400000)
     {
         u32Counter ++;
     }
-
     u32Counter = 0x00;
 
 
