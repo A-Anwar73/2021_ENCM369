@@ -27319,7 +27319,7 @@ void UserAppRun(void)
 
 
 
-    while(PORTA < 0xBF)
+    while(LATA < 0xBF)
     {
 
 
@@ -27334,11 +27334,21 @@ void UserAppRun(void)
 
 
 
-        PORTA = PORTA + 0x01;
+
+        LATA += 0x01;
     }
 
 
 
-    PORTA &= 0x80;
+    while(u32Counter <= 400000)
+    {
+        u32Counter ++;
+    }
+
+    u32Counter = 0x00;
+
+
+    LATA = 0x80;
+
 
 }

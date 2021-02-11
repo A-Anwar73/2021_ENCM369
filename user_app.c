@@ -98,7 +98,7 @@ void UserAppRun(void)
     
     /*this variable is used to implement the 250 ms delay */
     
-    while(PORTA < 0xBF)
+    while(LATA < 0xBF)
     {
         /*implementing the 250 ms delay*/
         
@@ -113,12 +113,22 @@ void UserAppRun(void)
         
         /*adding 1 to PORTA to implement the counter*/
         
-        PORTA = PORTA + 0x01;
+        //PORTA = PORTA + 0x01;
+        LATA += 0x01;
     }
     
     /*resetting PORTA back to start counting again*/
     
-    PORTA &= 0x80;
+    while(u32Counter <= 400000)
+    {
+        u32Counter ++;
+    }
+    
+    u32Counter = 0x00;
+    
+    //PORTA &= 0x80;
+    LATA = 0x80;
+    
 
 } /* end UserAppRun */
 
