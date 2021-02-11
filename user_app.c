@@ -102,7 +102,7 @@ void UserAppRun(void)
     {
         /*implementing the 250 ms delay*/
         
-        while(u32Counter<=400000)
+        while(u32Counter <= 400000)
         {
             u32Counter++;
         }
