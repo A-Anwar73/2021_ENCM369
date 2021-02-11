@@ -95,14 +95,25 @@ Promises:
 void UserAppRun(void)
 {
     u32 u32Counter = 0x00;
+    
+    /*this variable is used to implement the 250 ms delay */
+    
     while(PORTA < 0xBF)
     {
+        /*implementing the 250 ms delay*/
+        
         while(u32Counter<=400000)
         {
             u32Counter++;
         }
+        
+        /*adding 1 to PORTA to implement the counter*/
+        
         PORTA = PORTA + 0x01;
     }
+    
+    /*resetting PORTA back to start counting again*/
+    
     PORTA &= 0x80;
 
 } /* end UserAppRun */

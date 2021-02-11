@@ -2550,46 +2550,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_app.c: 97:     u32 u32Counter = 0x00;
 [v _u32Counter `ul ~T0 @X0 1 a ]
 [e = _u32Counter -> -> -> 0 `i `l `ul ]
-"98
-[; ;user_app.c: 98:     while(PORTA < 0xBF)
+"101
+[; ;user_app.c: 101:     while(PORTA < 0xBF)
 [e $U 2274  ]
 [e :U 2275 ]
-"99
-[; ;user_app.c: 99:     {
+"102
+[; ;user_app.c: 102:     {
 {
-"100
-[; ;user_app.c: 100:         while(u32Counter<=400000)
+"105
+[; ;user_app.c: 105:         while(u32Counter<=400000)
 [e $U 2277  ]
 [e :U 2278 ]
-"101
-[; ;user_app.c: 101:         {
+"106
+[; ;user_app.c: 106:         {
 {
-"102
-[; ;user_app.c: 102:             u32Counter++;
+"107
+[; ;user_app.c: 107:             u32Counter++;
 [e ++ _u32Counter -> -> -> 1 `i `l `ul ]
-"103
-[; ;user_app.c: 103:         }
+"108
+[; ;user_app.c: 108:         }
 }
 [e :U 2277 ]
-"100
-[; ;user_app.c: 100:         while(u32Counter<=400000)
+"105
+[; ;user_app.c: 105:         while(u32Counter<=400000)
 [e $ <= _u32Counter -> -> 400000 `l `ul 2278  ]
 [e :U 2279 ]
-"104
-[; ;user_app.c: 104:         PORTA = PORTA + 0x01;
+"112
+[; ;user_app.c: 112:         PORTA = PORTA + 0x01;
 [e = _PORTA -> + -> _PORTA `i -> 1 `i `uc ]
-"105
-[; ;user_app.c: 105:     }
+"113
+[; ;user_app.c: 113:     }
 }
 [e :U 2274 ]
-"98
-[; ;user_app.c: 98:     while(PORTA < 0xBF)
+"101
+[; ;user_app.c: 101:     while(PORTA < 0xBF)
 [e $ < -> _PORTA `i -> 191 `i 2275  ]
 [e :U 2276 ]
-"106
-[; ;user_app.c: 106:     PORTA &= 0x80;
+"117
+[; ;user_app.c: 117:     PORTA &= 0x80;
 [e =& _PORTA -> -> 128 `i `Vuc ]
-"108
-[; ;user_app.c: 108: }
+"119
+[; ;user_app.c: 119: }
 [e :UE 2273 ]
 }

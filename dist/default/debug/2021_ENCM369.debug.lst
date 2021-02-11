@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Tue Feb 09 03:59:13 2021
+                                                                                               Thu Feb 11 19:19:36 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	18F27Q43
@@ -254,11 +254,11 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    220  01FFB0  0E00               	movlw	0
    221  01FFB2  6E11               	movwf	(UserAppRun@u32Counter+3)^(0+1280),c
    222                           
-   223                           ;user_app.c: 98:     while(PORTA < 0xBF)
+   223                           ;user_app.c: 101:     while(PORTA < 0xBF)
    224  01FFB4  EFF3  F0FF         	goto	l58
    225  01FFB8                     l746:
    226                           
-   227                           ;user_app.c: 101:         {;user_app.c: 102:             u32Counter++;
+   227                           ;user_app.c: 106:         {;user_app.c: 107:             u32Counter++;
    228  01FFB8  0E01               	movlw	1
    229  01FFBA  260E               	addwf	UserAppRun@u32Counter^(0+1280),f,c
    230  01FFBC  0E00               	movlw	0
@@ -267,7 +267,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    233  01FFC2  2211               	addwfc	(UserAppRun@u32Counter+3)^(0+1280),f,c
    234  01FFC4                     l60:
    235                           
-   236                           ;user_app.c: 100:         while(u32Counter<=400000)
+   236                           ;user_app.c: 105:         while(u32Counter<=400000)
    237  01FFC4  5011               	movf	(UserAppRun@u32Counter+3)^(0+1280),w,c
    238  01FFC6  E10D               	bnz	u10
    239  01FFC8  0E81               	movlw	129
@@ -283,12 +283,12 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    249  01FFDE  EFDC  F0FF         	goto	l746
    250  01FFE2                     u10:
    251  01FFE2                     
-   252                           ;user_app.c: 104:         PORTA = PORTA + 0x01;
+   252                           ;user_app.c: 112:         PORTA = PORTA + 0x01;
    253  01FFE2  28CE               	incf	206,w,c	;volatile
    254  01FFE4  6ECE               	movwf	206,c	;volatile
    255  01FFE6                     l58:
    256                           
-   257                           ;user_app.c: 98:     while(PORTA < 0xBF)
+   257                           ;user_app.c: 101:     while(PORTA < 0xBF)
    258  01FFE6  0EBE               	movlw	190
    259  01FFE8  64CE               	cpfsgt	206,c	;volatile
    260  01FFEA  EFF9  F0FF         	goto	u21
@@ -297,7 +297,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    263  01FFF2  EFE2  F0FF         	goto	l60
    264  01FFF6                     u20:
    265  01FFF6                     
-   266                           ;user_app.c: 106:     PORTA &= 0x80;
+   266                           ;user_app.c: 117:     PORTA &= 0x80;
    267  01FFF6  0E80               	movlw	128
    268  01FFF8  16CE               	andwf	206,f,c	;volatile
    269  01FFFA  0012               	return		;funcret
@@ -1126,7 +1126,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Tue Feb 09 03:59:13 2021
+Symbol Table                                                                                   Thu Feb 11 19:19:36 2021
 
      __size_of_SysTickSetup 0022                          l13 FF38                          l22 FF3A  
                         l16 FF4C                          l19 FF80                          l60 FFC4  
