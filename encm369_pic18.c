@@ -90,7 +90,8 @@ void GpioSetup(void)
 {
     TRISA = 0x00;
     ANSELA = 0x00;
-    PORTA = 0x80;
+    //PORTA = 0x80;
+    LATA = 0x80;
   
 } /* end GpioSetup() */
 
