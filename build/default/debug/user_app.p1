@@ -2576,20 +2576,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ <= _u32Counter -> -> 400000 `l `ul 2278  ]
 [e :U 2279 ]
 "112
-[; ;user_app.c: 112:         PORTA = PORTA + 0x01;
+[; ;user_app.c: 112:         u32Counter = 0x00;
+[e = _u32Counter -> -> -> 0 `i `l `ul ]
+"116
+[; ;user_app.c: 116:         PORTA = PORTA + 0x01;
 [e = _PORTA -> + -> _PORTA `i -> 1 `i `uc ]
-"113
-[; ;user_app.c: 113:     }
+"117
+[; ;user_app.c: 117:     }
 }
 [e :U 2274 ]
 "101
 [; ;user_app.c: 101:     while(PORTA < 0xBF)
 [e $ < -> _PORTA `i -> 191 `i 2275  ]
 [e :U 2276 ]
-"117
-[; ;user_app.c: 117:     PORTA &= 0x80;
+"121
+[; ;user_app.c: 121:     PORTA &= 0x80;
 [e =& _PORTA -> -> 128 `i `Vuc ]
-"119
-[; ;user_app.c: 119: }
+"123
+[; ;user_app.c: 123: }
 [e :UE 2273 ]
 }

@@ -106,6 +106,10 @@ void UserAppRun(void)
         {
             u32Counter++;
         }
+       
+        /*resetting counter back to zero for the next delay*/
+        
+        u32Counter = 0x00;
         
         /*adding 1 to PORTA to implement the counter*/
         

@@ -27330,6 +27330,10 @@ void UserAppRun(void)
 
 
 
+        u32Counter = 0x00;
+
+
+
         PORTA = PORTA + 0x01;
     }
 
