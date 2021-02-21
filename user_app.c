@@ -94,12 +94,10 @@ Promises:
 */
 void UserAppRun(void)
 {
-    /*if (PORTB==0x20)
+    if(PORTB == 0x30)
     {
-    /*adding 1 to LATA to implement the counter*/
-    LATA += 0x01;
-    
-} /* end UserAppRun */
+        LATA += 0x01;
+    } /* end UserAppRun */
 
 
 
