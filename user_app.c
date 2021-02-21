@@ -94,36 +94,11 @@ Promises:
 */
 void UserAppRun(void)
 {
-    u32 u32Counter = 0x00;
-    
-    /*this variable is used to implement the 250 ms delay */
-    
-    while(LATA < 0xBF)
+    /*if (PORTB==0x20)
     {
-        /*implementing the 250 ms delay*/
-        while(u32Counter <= 400000)
-        {
-            u32Counter++;
-        }
-       
-        /*resetting counter back to zero for the next delay*/
-        u32Counter = 0x00;
-        
-        /*adding 1 to LATA to implement the counter*/
-        LATA += 0x01;
-    }
+    /*adding 1 to LATA to implement the counter*/
+    LATA += 0x01;
     
-    /*delay for resetting the counter*/
-    while(u32Counter <= 400000)
-    {
-        u32Counter ++;
-    }
-    u32Counter = 0x00;
-    
-    /*resetting LATA back to start counting again*/
-    LATA = 0x80;
-    
-
 } /* end UserAppRun */
 
 

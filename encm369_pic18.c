@@ -91,7 +91,8 @@ void GpioSetup(void)
     TRISA = 0x00;
     ANSELA = 0x00;
     LATA = 0x80;
-  
+    ANSELB = 0x00;
+    TRISB = 0x20;
 } /* end GpioSetup() */
 
 
