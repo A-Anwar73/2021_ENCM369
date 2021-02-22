@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2_31\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\2021_ENCM369.production.sym \
   --cmf=dist/default/production\2021_ENCM369.production.cmf -z -Q18F27Q43 \
-  -oC:\Users\ahmad\AppData\Local\Temp\s2o8c.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\ahmad\AppData\Local\Temp\s2cgs.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/2021_ENCM369.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0560h-025FFh -pstack=STACK \
   -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh -ASMALLCONST=02600h-026FFhx474 \
@@ -31,7 +31,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\ahmad\AppData\Local\Temp\s2o8c.o \
+  C:\Users\ahmad\AppData\Local\Temp\s2cgs.o \
   dist/default/production\2021_ENCM369.production.o 
 
 Object code version is 3.11
@@ -41,7 +41,7 @@ Machine type is 18F27Q43
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\ahmad\AppData\Local\Temp\s2o8c.o
+C:\Users\ahmad\AppData\Local\Temp\s2cgs.o
                 idloc                            200000   200000       20        0       5
                 config                           300000   300000        A        0       4
                 init                              1FFFC    1FFFC        4     FFFE       0
@@ -49,15 +49,16 @@ C:\Users\ahmad\AppData\Local\Temp\s2o8c.o
 dist/default/production\2021_ENCM369.production.o
                 idloc                            200000   200000       20        0       5
                 config                           300000   300000        A        0       4
-                text6                             1FF76    1FF76        2     FFBB       0
-                text5                             1FFA0    1FFA0       18     FFD0       0
-                text4                             1FFB8    1FFB8       22     FFDC       0
-                text3                             1FF78    1FF78        2     FFBC       0
-                text2                             1FF7A    1FF7A        2     FFBD       0
-                text1                             1FF7C    1FF7C       12     FFBE       0
-                text0                             1FFDA    1FFDA       22     FFED       0
-                bssCOMRAM                           501      501        D      501       1
-                cinit                             1FF8E    1FF8E       12     FFC7       0
+                text6                             1FF16    1FF16        2     FF8B       0
+                text5                             1FF2E    1FF2E       18     FF97       0
+                text4                             1FF46    1FF46       22     FFA3       0
+                text3                             1FF18    1FF18        2     FF8C       0
+                text2                             1FF1A    1FF1A        2     FF8D       0
+                text1                             1FF8A    1FF8A       72     FFC5       0
+                text0                             1FF68    1FF68       22     FFB4       0
+                cstackCOMRAM                        516      516        5      501       1
+                bssCOMRAM                           501      501       15      501       1
+                cinit                             1FF1C    1FF1C       12     FF8E       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -65,14 +66,14 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   CODE           
                 init                              1FFFC    1FFFC        4         0
                 reset_vec                             0        0        4         0
-                text6                             1FF76    1FF76        2         0
-                text5                             1FFA0    1FFA0       18         0
-                text4                             1FFB8    1FFB8       22         0
-                text3                             1FF78    1FF78        2         0
-                text2                             1FF7A    1FF7A        2         0
-                text1                             1FF7C    1FF7C       12         0
-                text0                             1FFDA    1FFDA       22         0
-                cinit                             1FF8E    1FF8E       12         0
+                text6                             1FF16    1FF16        2         0
+                text5                             1FF2E    1FF2E       18         0
+                text4                             1FF46    1FF46       22         0
+                text3                             1FF18    1FF18        2         0
+                text2                             1FF1A    1FF1A        2         0
+                text1                             1FF8A    1FF8A       72         0
+                text0                             1FF68    1FF68       22         0
+                cinit                             1FF1C    1FF1C       12         0
 
         CLASS   CONST          
 
@@ -81,7 +82,8 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                bssCOMRAM                           501      501        D         1
+                cstackCOMRAM                        516      516        5         1
+                bssCOMRAM                           501      501       15         1
 
         CLASS   ABS1           
 
@@ -172,15 +174,15 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                bssCOMRAM                      000501  00000D  00050E       501       1  COMRAM  
-                text6                          01FF76  000002  01FF78      FFBB       0  CODE    
-                text3                          01FF78  000002  01FF7A      FFBC       0  CODE    
-                text2                          01FF7A  000002  01FF7C      FFBD       0  CODE    
-                text1                          01FF7C  000012  01FF8E      FFBE       0  CODE    
-                cinit                          01FF8E  000012  01FFA0      FFC7       0  CODE    
-                text5                          01FFA0  000018  01FFB8      FFD0       0  CODE    
-                text4                          01FFB8  000022  01FFDA      FFDC       0  CODE    
-                text0                          01FFDA  000022  01FFFC      FFED       0  CODE    
+                bssCOMRAM                      000501  00001A  00051B       501       1  COMRAM  
+                text6                          01FF16  000002  01FF18      FF8B       0  CODE    
+                text3                          01FF18  000002  01FF1A      FF8C       0  CODE    
+                text2                          01FF1A  000002  01FF1C      FF8D       0  CODE    
+                cinit                          01FF1C  000012  01FF2E      FF8E       0  CODE    
+                text5                          01FF2E  000018  01FF46      FF97       0  CODE    
+                text4                          01FF46  000022  01FF68      FFA3       0  CODE    
+                text0                          01FF68  000022  01FF8A      FFB4       0  CODE    
+                text1                          01FF8A  000072  01FFFC      FFC5       0  CODE    
                 init                           01FFFC  000004  020000      FFFE       0  CODE    
 
 
@@ -220,37 +222,40 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           00050E-0025FF             20F2
-        CODE             000004-01FF75            1FF72
-        COMRAM           00050E-00055F               52
+        BIGRAM           00051B-0025FF             20E5
+        CODE             000004-01FF15            1FF12
+        COMRAM           00051B-00055F               45
         CONFIG           30000A-300011                8
-        CONST            000004-01FF75            1FF72
+        CONST            000004-01FF15            1FF12
         EEDATA           380000-3803FF              400
         MEDIUMCONST      002600-00FFFF             DA00
-                         012600-01FF75             D976
+                         012600-01FF15             D916
         RAM              000560-0025FF              100
         SFR              000000-0004FF              100
-        SMALLCONST       002600-01FF75              100
+        SMALLCONST       002600-01FF15              100
         STACK            000560-0025FF             20A0
 
                                   Symbol Table
 
+UserAppRun@u32Counter       bssCOMRAM    000505
+UserAppRun@u32Current       cstackCOMRAM 000517
+UserAppRun@u32Previous      bssCOMRAM    000501
 _ANSELA                     (abs)        000400
 _ANSELB                     (abs)        000408
-_ClockSetup                 text6        01FF76
-_G_u32SystemFlags           bssCOMRAM    000501
-_G_u32SystemTime1ms         bssCOMRAM    000509
-_G_u32SystemTime1s          bssCOMRAM    000505
-_G_u8UserAppFlags           bssCOMRAM    00050D
-_GpioSetup                  text5        01FFA0
+_ClockSetup                 text6        01FF16
+_G_u32SystemFlags           bssCOMRAM    000509
+_G_u32SystemTime1ms         bssCOMRAM    000511
+_G_u32SystemTime1s          bssCOMRAM    00050D
+_G_u8UserAppFlags           bssCOMRAM    000515
+_GpioSetup                  text5        01FF2E
 _LATA                       (abs)        0004BE
 _PORTB                      (abs)        0004CF
-_SysTickSetup               text4        01FFB8
-_SystemSleep                text3        01FF78
+_SysTickSetup               text4        01FF46
+_SystemSleep                text3        01FF18
 _TRISA                      (abs)        0004C6
 _TRISB                      (abs)        0004C7
-_UserAppInitialize          text2        01FF7A
-_UserAppRun                 text1        01FF7C
+_UserAppInitialize          text2        01FF1A
+_UserAppRun                 text1        01FF8A
 __HRAM                      (abs)        000000
 __Habs1                     abs1         000000
 __Hbank10                   bank10       000000
@@ -324,7 +329,7 @@ __Hrparam                   rparam       000000
 __Hsfr                      sfr          000000
 __Hsmallconst               smallconst   000000
 __Hspace_0                  (abs)        020000
-__Hspace_1                  (abs)        00050E
+__Hspace_1                  (abs)        00051B
 __Hspace_2                  (abs)        000000
 __Hspace_4                  (abs)        60000A
 __Hstack                    stack        000000
@@ -426,7 +431,7 @@ __Ltext4                    text4        000000
 __Ltext5                    text5        000000
 __Ltext6                    text6        000000
 __S0                        (abs)        020000
-__S1                        (abs)        00050E
+__S1                        (abs)        00051B
 __S2                        (abs)        000000
 __S4                        (abs)        000000
 __S5                        (abs)        000000
@@ -437,26 +442,26 @@ ___rparam_used              (abs)        000001
 ___sp                       stack        000000
 __accesstop                 (abs)        000560
 __activetblptr              (abs)        000000
-__end_of_ClockSetup         text6        01FF78
-__end_of_GpioSetup          text5        01FFB8
-__end_of_SysTickSetup       text4        01FFDA
-__end_of_SystemSleep        text3        01FF7A
-__end_of_UserAppInitialize  text2        01FF7C
-__end_of_UserAppRun         text1        01FF8E
-__end_of__initialization    cinit        01FF9A
-__end_of_main               text0        01FFFC
-__initialization            cinit        01FF8E
+__end_of_ClockSetup         text6        01FF18
+__end_of_GpioSetup          text5        01FF46
+__end_of_SysTickSetup       text4        01FF68
+__end_of_SystemSleep        text3        01FF1A
+__end_of_UserAppInitialize  text2        01FF1C
+__end_of_UserAppRun         text1        01FFFC
+__end_of__initialization    cinit        01FF28
+__end_of_main               text0        01FF8A
+__initialization            cinit        01FF1C
 __mediumconst               mediumconst  000000
 __pbssCOMRAM                bssCOMRAM    000501
-__pcinit                    cinit        01FF8E
-__pcstackCOMRAM             cstackCOMRAM 000000
-__ptext0                    text0        01FFDA
-__ptext1                    text1        01FF7C
-__ptext2                    text2        01FF7A
-__ptext3                    text3        01FF78
-__ptext4                    text4        01FFB8
-__ptext5                    text5        01FFA0
-__ptext6                    text6        01FF76
+__pcinit                    cinit        01FF1C
+__pcstackCOMRAM             cstackCOMRAM 000516
+__ptext0                    text0        01FF68
+__ptext1                    text1        01FF8A
+__ptext2                    text2        01FF1A
+__ptext3                    text3        01FF18
+__ptext4                    text4        01FF46
+__ptext5                    text5        01FF2E
+__ptext6                    text6        01FF16
 __ramtop                    ramtop       002600
 __size_of_ClockSetup        (abs)        000000
 __size_of_GpioSetup         (abs)        000000
@@ -466,8 +471,8 @@ __size_of_UserAppInitialize (abs)        000000
 __size_of_UserAppRun        (abs)        000000
 __size_of_main              (abs)        000000
 __smallconst                smallconst   000000
-_main                       text0        01FFDA
-end_of_initialization       cinit        01FF9A
+_main                       text0        01FF68
+end_of_initialization       cinit        01FF28
 intlevel0                   text         000000
 intlevel1                   text         000000
 intlevel2                   text         000000
@@ -475,7 +480,7 @@ intlevel3                   text         000000
 stackhi                     (abs)        0025FF
 stacklo                     (abs)        000560
 start                       init         01FFFC
-start_initialization        cinit        01FF8E
+start_initialization        cinit        01FF1C
 
 
 FUNCTION INFORMATION:
@@ -520,21 +525,21 @@ Total ram usage:        0 bytes
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-		None
+  u32Current      4    1[COMRAM] unsigned long 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
-		status,2, status,0
+		wreg, status,2, status,0
  Tracked objects:
 		On entry : 
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK11  BANK12  BANK13  BANK14  BANK15  BANK16  BANK17  BANK18  BANK19  BANK20  BANK21  BANK22  BANK23  BANK24  BANK25  BANK26  BANK27  BANK28  BANK29  BANK30  BANK31  BANK32  BANK33  BANK34  BANK35  BANK36  BANK37
       Params:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
-Total ram usage:        0 bytes
+      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+      Totals:         5       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+Total ram usage:        5 bytes
  Hardware stack levels used:    1
  This function calls:
 		Nothing
@@ -693,26 +698,26 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 encm369_pic18.c
-		_GpioSetup     		CODE           	1FFA0	0000	24
-		_SystemSleep   		CODE           	1FF78	0000	2
-		_SysTickSetup  		CODE           	1FFB8	0000	34
-		_ClockSetup    		CODE           	1FF76	0000	2
+		_GpioSetup     		CODE           	1FF2E	0000	24
+		_SystemSleep   		CODE           	1FF18	0000	2
+		_SysTickSetup  		CODE           	1FF46	0000	34
+		_ClockSetup    		CODE           	1FF16	0000	2
 
 encm369_pic18.c estimated size: 62
 
 shared
-		__initialization		CODE           	1FF8E	0000	12
+		__initialization		CODE           	1FF1C	0000	12
 
 shared estimated size: 12
 
 main.c
-		_main          		CODE           	1FFDA	0000	34
+		_main          		CODE           	1FF68	0000	34
 
 main.c estimated size: 34
 
 user_app.c
-		_UserAppRun    		CODE           	1FF7C	0000	18
-		_UserAppInitialize		CODE           	1FF7A	0000	2
+		_UserAppRun    		CODE           	1FF8A	0000	114
+		_UserAppInitialize		CODE           	1FF1A	0000	2
 
-user_app.c estimated size: 20
+user_app.c estimated size: 116
 

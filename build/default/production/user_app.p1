@@ -2550,19 +2550,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _UserAppRun ]
 [f ]
 "97
-[; ;user_app.c: 97:     if((PORTB & 0x20) == 0x20)
-[e $ ! == & -> _PORTB `i -> 32 `i -> 32 `i 2274  ]
+[; ;user_app.c: 97:     static u32 u32Counter = 0x00000000;
+[v F15920 `ul ~T0 @X0 1 s u32Counter ]
+[i F15920
+-> -> -> 0 `i `l `ul
+]
 "98
-[; ;user_app.c: 98:     {
-{
+[; ;user_app.c: 98:     static u32 u32Previous = 0x00000000;
+[v F15921 `ul ~T0 @X0 1 s u32Previous ]
+[i F15921
+-> -> -> 0 `i `l `ul
+]
 "99
-[; ;user_app.c: 99:         LATA += 0x01;
-[e =+ _LATA -> -> 1 `i `Vuc ]
+[; ;user_app.c: 99:     u32 u32Current = PORTB & 0x20;
+[v _u32Current `ul ~T0 @X0 1 a ]
+[e = _u32Current -> -> & -> _PORTB `i -> 32 `i `l `ul ]
 "100
-[; ;user_app.c: 100:     }
+[; ;user_app.c: 100:     if( (u32Current == 0x20) && (u32Previous == 0x00) )
+[e $ ! && == _u32Current -> -> -> 32 `i `l `ul == F15921 -> -> -> 0 `i `l `ul 2274  ]
+"101
+[; ;user_app.c: 101:     {
+{
+"102
+[; ;user_app.c: 102:         u32Previous = u32Current;
+[e = F15921 _u32Current ]
+"103
+[; ;user_app.c: 103:         u32Counter += 0x00000001;
+[e =+ F15920 -> -> -> 1 `i `l `ul ]
+"104
+[; ;user_app.c: 104:         u32Counter &= 0x3f;
+[e =& F15920 -> -> -> 63 `i `l `ul ]
+"105
+[; ;user_app.c: 105:         LATA = 0x80 + u32Counter;
+[e = _LATA -> + -> -> -> 128 `i `l `ul F15920 `uc ]
+"106
+[; ;user_app.c: 106:     }
 }
 [e :U 2274 ]
-"101
-[; ;user_app.c: 101: }
+"107
+[; ;user_app.c: 107: }
 [e :UE 2273 ]
 }

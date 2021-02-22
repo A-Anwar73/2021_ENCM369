@@ -27315,8 +27315,14 @@ void UserAppInitialize(void)
 # 95 "user_app.c"
 void UserAppRun(void)
 {
-    if((PORTB & 0x20) == 0x20)
+    static u32 u32Counter = 0x00000000;
+    static u32 u32Previous = 0x00000000;
+    u32 u32Current = PORTB & 0x20;
+    if( (u32Current == 0x20) && (u32Previous == 0x00) )
     {
-        LATA += 0x01;
+        u32Counter += 0x00000001;
+        u32Counter &= 0x3f;
+        LATA = 0x80 + u32Counter;
     }
+    u32Previous = u32Current;
 }
