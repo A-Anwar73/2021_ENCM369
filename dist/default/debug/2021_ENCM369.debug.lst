@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
-                                                                                               Mon Feb 22 04:49:53 2021
+                                                                                               Thu Feb 25 07:04:02 2021
 
 Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
      1                           	processor	18F27Q43
@@ -268,7 +268,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    233  01FF9A  6A19               	clrf	(UserAppRun@u32Current+2)^(0+1280),c
    234  01FF9C  6A1A               	clrf	(UserAppRun@u32Current+3)^(0+1280),c
    235                           
-   236                           ;user_app.c: 100:     if( (u32Current == 0x20) && (u32Previous == 0x00) )
+   236                           ;user_app.c: 101:     if( (u32Current == 0x20) && (u32Previous == 0x00) )
    237  01FF9E  0E20               	movlw	32
    238  01FFA0  1817               	xorwf	UserAppRun@u32Current^(0+1280),w,c
    239  01FFA2  1018               	iorwf	(UserAppRun@u32Current+1)^(0+1280),w,c
@@ -291,7 +291,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    256  01FFC8  EFF5  F0FF         	goto	l755
    257  01FFCC                     u20:
    258  01FFCC                     
-   259                           ;user_app.c: 101:     {;user_app.c: 102:         u32Counter += 0x00000001;
+   259                           ;user_app.c: 102:     {;user_app.c: 103:         u32Counter += 0x00000001;
    260  01FFCC  0E01               	movlw	1
    261  01FFCE  2605               	addwf	UserAppRun@u32Counter^(0+1280),f,c
    262  01FFD0  0E00               	movlw	0
@@ -299,7 +299,7 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    264  01FFD4  2207               	addwfc	(UserAppRun@u32Counter+2)^(0+1280),f,c
    265  01FFD6  2208               	addwfc	(UserAppRun@u32Counter+3)^(0+1280),f,c
    266                           
-   267                           ;user_app.c: 103:         u32Counter &= 0x3f;
+   267                           ;user_app.c: 104:         u32Counter &= 0x3f;
    268  01FFD8  0E3F               	movlw	63
    269  01FFDA  1605               	andwf	UserAppRun@u32Counter^(0+1280),f,c
    270  01FFDC  0E00               	movlw	0
@@ -307,13 +307,13 @@ Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1
    272  01FFE0  1607               	andwf	(UserAppRun@u32Counter+2)^(0+1280),f,c
    273  01FFE2  1608               	andwf	(UserAppRun@u32Counter+3)^(0+1280),f,c
    274                           
-   275                           ;user_app.c: 104:         LATA = 0x80 + u32Counter;
+   275                           ;user_app.c: 105:         LATA = 0x80 + u32Counter;
    276  01FFE4  5005               	movf	UserAppRun@u32Counter^(0+1280),w,c
    277  01FFE6  0F80               	addlw	128
    278  01FFE8  6EBE               	movwf	190,c	;volatile
    279  01FFEA                     l755:
    280                           
-   281                           ;user_app.c: 106:     u32Previous = u32Current;
+   281                           ;user_app.c: 108:     u32Previous = u32Current;
    282  01FFEA  C517  F501         	movff	UserAppRun@u32Current,UserAppRun@u32Previous
    283  01FFEE  C518  F502         	movff	UserAppRun@u32Current+1,UserAppRun@u32Previous+1
    284  01FFF2  C519  F503         	movff	UserAppRun@u32Current+2,UserAppRun@u32Previous+2
@@ -1152,7 +1152,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.31 build 20201012212115 
-Symbol Table                                                                                   Mon Feb 22 04:49:53 2021
+Symbol Table                                                                                   Thu Feb 25 07:04:02 2021
 
      __size_of_SysTickSetup 0022                          l20 FF44                          l23 FF66  
                         l17 FF16                          l26 FF18                          l61 FF1A  

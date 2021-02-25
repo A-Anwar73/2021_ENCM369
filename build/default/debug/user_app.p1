@@ -2565,29 +2565,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_app.c: 99:     u32 u32Current = PORTB & 0x20;
 [v _u32Current `ul ~T0 @X0 1 a ]
 [e = _u32Current -> -> & -> _PORTB `i -> 32 `i `l `ul ]
-"100
-[; ;user_app.c: 100:     if( (u32Current == 0x20) && (u32Previous == 0x00) )
-[e $ ! && == _u32Current -> -> -> 32 `i `l `ul == F15921 -> -> -> 0 `i `l `ul 2274  ]
 "101
-[; ;user_app.c: 101:     {
-{
+[; ;user_app.c: 101:     if( (u32Current == 0x20) && (u32Previous == 0x00) )
+[e $ ! && == _u32Current -> -> -> 32 `i `l `ul == F15921 -> -> -> 0 `i `l `ul 2274  ]
 "102
-[; ;user_app.c: 102:         u32Counter += 0x00000001;
-[e =+ F15920 -> -> -> 1 `i `l `ul ]
+[; ;user_app.c: 102:     {
+{
 "103
-[; ;user_app.c: 103:         u32Counter &= 0x3f;
-[e =& F15920 -> -> -> 63 `i `l `ul ]
+[; ;user_app.c: 103:         u32Counter += 0x00000001;
+[e =+ F15920 -> -> -> 1 `i `l `ul ]
 "104
-[; ;user_app.c: 104:         LATA = 0x80 + u32Counter;
-[e = _LATA -> + -> -> -> 128 `i `l `ul F15920 `uc ]
+[; ;user_app.c: 104:         u32Counter &= 0x3f;
+[e =& F15920 -> -> -> 63 `i `l `ul ]
 "105
-[; ;user_app.c: 105:     }
+[; ;user_app.c: 105:         LATA = 0x80 + u32Counter;
+[e = _LATA -> + -> -> -> 128 `i `l `ul F15920 `uc ]
+"106
+[; ;user_app.c: 106:     }
 }
 [e :U 2274 ]
-"106
-[; ;user_app.c: 106:     u32Previous = u32Current;
+"108
+[; ;user_app.c: 108:     u32Previous = u32Current;
 [e = F15921 _u32Current ]
-"107
-[; ;user_app.c: 107: }
+"110
+[; ;user_app.c: 110: }
 [e :UE 2273 ]
 }
