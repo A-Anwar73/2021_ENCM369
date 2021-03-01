@@ -75,11 +75,38 @@ Promises:
 */
 void UserAppInitialize(void)
 {
-
-
+    /* LED initialization */
+    LATA = 0x80;
+    
+    /* Timer0 control register initialization to turn timer on, asynch mode, 16 bit
+     * Fosc/4, 1:16 prescaler, 1:1postscaler */
+    T0CON0 = 0x90;
+    T0CON1 = 0x54;
+    
 } /* end UserAppInitialize() */
 
-  
+/*---------------------------------------------------------------------------------------------------------------------
+ void TimeXus(u16 u16Microseconds)
+ Sets Timer0 to count u16Microseconds
+ 
+ Requires:
+ - Timer0 configured such that each timer tick is 1 microsecond
+ - u16Microseconds is the value in microseconds to time from 1 to 65535
+ 
+ Promises:
+ - Pre-loads TMr0H:L to clock out desired period
+ - TMR0IF cleared
+ - Timer0 enabled
+ */
+void TimeXus(u16 u16Microseconds)
+{
+    T0CON0 = 0x10;
+    TMR0L = u16Microseconds & 0x00ff;
+    TMR0H = (u16Microseconds & 0xff00) >> 8;
+    PIR3 &= 0x7f;
+    T0CON0 = 0x90;
+}
+
 /*!----------------------------------------------------------------------------------------------------------------------
 @fn void UserAppRun(void)
 
@@ -94,36 +121,20 @@ Promises:
 */
 void UserAppRun(void)
 {
-    u32 u32Counter = 0x00;
-    
-    /*this variable is used to implement the 250 ms delay */
-    
-    while(LATA < 0xBF)
+    /*static u8 u8Counter = 0x00;
+    u8Counter++;
+    u8 u8Temp = LATA;
+    u8Temp &= 0x80;
+    u8Temp |= (u8Counter & 0x3f);
+    LATA = u8Temp;*/
+    static u16 u16Toggle = 0x0000;
+    u16Toggle++;
+    if(u16Toggle == 0x1f4)
     {
-        /*implementing the 250 ms delay*/
-        while(u32Counter <= 400000)
-        {
-            u32Counter++;
-        }
-       
-        /*resetting counter back to zero for the next delay*/
-        u32Counter = 0x00;
-        
-        /*adding 1 to LATA to implement the counter*/
-        LATA += 0x01;
+        u16Toggle &= 0x0000;
+        LATA ^= 0x01; 
     }
     
-    /*delay for resetting the counter*/
-    while(u32Counter <= 400000)
-    {
-        u32Counter ++;
-    }
-    u32Counter = 0x00;
-    
-    /*resetting LATA back to start counting again*/
-    LATA = 0x80;
-    
-
 } /* end UserAppRun */
 
 

@@ -27293,6 +27293,7 @@ void SystemSleep(void);
 # 27 "./user_app.h"
 void UserAppInitialize(void);
 void UserAppRun(void);
+void TimeXus (u16 u16Microseconds);
 # 106 "./configuration.h" 2
 # 6 "main.c" 2
 
@@ -27333,9 +27334,11 @@ void main(void)
 
 
 
-                   ;
+    (LATA &= 0x7f);
     SystemSleep();
-                  ;
+
+
+    (LATA |= 0x80);
 
   }
 
