@@ -2575,59 +2575,110 @@ Version 4.0 HI-TECH Software Intermediate Code
 "102
 [; ;user_app.c: 102: {
 [f ]
-"103
-[; ;user_app.c: 103:     T0CON0 = 0x10;
-[e = _T0CON0 -> -> 16 `i `uc ]
 "104
-[; ;user_app.c: 104:     TMR0L = u16Microseconds & 0x00ff;
-[e = _TMR0L -> & -> _u16Microseconds `ui -> -> 255 `i `ui `uc ]
-"105
-[; ;user_app.c: 105:     TMR0H = (u16Microseconds & 0xff00) >> 8;
-[e = _TMR0H -> >> & -> _u16Microseconds `ui -> 65280 `ui -> 8 `i `uc ]
-"106
-[; ;user_app.c: 106:     PIR3 &= 0x7f;
-[e =& _PIR3 -> -> 127 `i `Vuc ]
+[; ;user_app.c: 104:     T0CON0 &= 0x7f;
+[e =& _T0CON0 -> -> 127 `i `Vuc ]
 "107
-[; ;user_app.c: 107:     T0CON0 = 0x90;
-[e = _T0CON0 -> -> 144 `i `uc ]
+[; ;user_app.c: 107:     u16 u16Timer = 0xffff - u16Microseconds;
+[v _u16Timer `us ~T0 @X0 1 a ]
+[e = _u16Timer -> - -> 65535 `ui -> _u16Microseconds `ui `us ]
 "108
-[; ;user_app.c: 108: }
+[; ;user_app.c: 108:     TMR0L = u16Timer & 0x00ff;
+[e = _TMR0L -> & -> _u16Timer `ui -> -> 255 `i `ui `uc ]
+"109
+[; ;user_app.c: 109:     TMR0H = (u8) ( (u16Timer & 0xff00) >> 8 );
+[e = _TMR0H -> >> & -> _u16Timer `ui -> 65280 `ui -> 8 `i `uc ]
+"112
+[; ;user_app.c: 112:     PIR3 &= 0x7f;
+[e =& _PIR3 -> -> 127 `i `Vuc ]
+"115
+[; ;user_app.c: 115:     T0CON0 |= 0x80;
+[e =| _T0CON0 -> -> 128 `i `Vuc ]
+"116
+[; ;user_app.c: 116: }
 [e :UE 2273 ]
 }
-"122
-[; ;user_app.c: 122: void UserAppRun(void)
+"130
+[; ;user_app.c: 130: void UserAppRun(void)
 [v _UserAppRun `(v ~T0 @X0 1 ef ]
-"123
-[; ;user_app.c: 123: {
+"131
+[; ;user_app.c: 131: {
 {
 [e :U _UserAppRun ]
 [f ]
-"130
-[; ;user_app.c: 130:     static u16 u16Toggle = 0x0000;
-[v F15924 `us ~T0 @X0 1 s u16Toggle ]
-[i F15924
+"132
+[; ;user_app.c: 132:     static u16 u16Delay = 0x0000;
+[v F15925 `us ~T0 @X0 1 s u16Delay ]
+[i F15925
 -> -> 0 `i `us
 ]
-"131
-[; ;user_app.c: 131:     u16Toggle++;
-[e ++ F15924 -> -> 1 `i `us ]
-"132
-[; ;user_app.c: 132:     if(u16Toggle == 0x1f4)
-[e $ ! == -> F15924 `ui -> -> 500 `i `ui 2275  ]
-"133
-[; ;user_app.c: 133:     {
-{
-"134
-[; ;user_app.c: 134:         u16Toggle &= 0x0000;
-[e =& F15924 -> -> 0 `i `us ]
 "135
-[; ;user_app.c: 135:         LATA ^= 0x01;
-[e =^ _LATA -> -> 1 `i `Vuc ]
-"136
-[; ;user_app.c: 136:     }
+[; ;user_app.c: 135:     static int intLedState = 0;
+[v F15926 `i ~T0 @X0 1 s intLedState ]
+[i F15926
+-> 0 `i
+]
+[v F15927 `uc ~T0 @X0 -> 6 `i s ]
+[i F15927
+:U ..
+"137
+[; ;user_app.c: 137:     u8 au8Pattern [6] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20};
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+-> -> 8 `i `uc
+-> -> 16 `i `uc
+-> -> 32 `i `uc
+..
+]
+[v _au8Pattern `uc ~T0 @X0 -> 6 `i a ]
+[e = _au8Pattern F15927 ]
+"138
+[; ;user_app.c: 138:     u16Delay++;
+[e ++ F15925 -> -> 1 `i `us ]
+"141
+[; ;user_app.c: 141:     if(u16Delay == 500)
+[e $ ! == -> F15925 `ui -> -> 500 `i `ui 2275  ]
+"142
+[; ;user_app.c: 142:     {
+{
+"143
+[; ;user_app.c: 143:        u16Delay = 0x0000;
+[e = F15925 -> -> 0 `i `us ]
+"144
+[; ;user_app.c: 144:        u8 u8Temp = LATA;
+[v _u8Temp `uc ~T0 @X0 1 a ]
+[e = _u8Temp _LATA ]
+"147
+[; ;user_app.c: 147:        u8Temp &= 0x80;
+[e =& _u8Temp -> -> 128 `i `uc ]
+"150
+[; ;user_app.c: 150:        u8Temp |= au8Pattern[intLedState];
+[e =| _u8Temp -> *U + &U _au8Pattern * -> -> F15926 `ui `ux -> -> # *U &U _au8Pattern `ui `ux `uc ]
+"151
+[; ;user_app.c: 151:        LATA = u8Temp;
+[e = _LATA _u8Temp ]
+"152
+[; ;user_app.c: 152:        intLedState++;
+[e ++ F15926 -> 1 `i ]
+"155
+[; ;user_app.c: 155:        if(intLedState == 6)
+[e $ ! == F15926 -> 6 `i 2276  ]
+"156
+[; ;user_app.c: 156:        {
+{
+"157
+[; ;user_app.c: 157:            intLedState = 0;
+[e = F15926 -> 0 `i ]
+"158
+[; ;user_app.c: 158:        }
+}
+[e :U 2276 ]
+"159
+[; ;user_app.c: 159:     }
 }
 [e :U 2275 ]
-"138
-[; ;user_app.c: 138: }
+"160
+[; ;user_app.c: 160: }
 [e :UE 2274 ]
 }

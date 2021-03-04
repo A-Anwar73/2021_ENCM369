@@ -78,8 +78,8 @@ void UserAppInitialize(void)
     /* LED initialization */
     LATA = 0x80;
     
-    /* Timer0 control register initialization to turn timer on, asynch mode, 16 bit
-     * Fosc/4, 1:16 prescaler, 1:1postscaler */
+    /* Timer0 control register initialization to turn timer on, asynchronous mode, 16 bit
+     * Fosc/4, 1:16 pre-scaler, 1:1post-scaler */
     T0CON0 = 0x90;
     T0CON1 = 0x54;
     
@@ -100,11 +100,19 @@ void UserAppInitialize(void)
  */
 void TimeXus(u16 u16Microseconds)
 {
-    T0CON0 = 0x10;
-    TMR0L = u16Microseconds & 0x00ff;
-    TMR0H = (u16Microseconds & 0xff00) >> 8;
+    /*Disabling the Timer*/
+    T0CON0 &= 0x7f;
+    
+    /*Pre-loading TMR0H and TMROL*/
+    u16 u16Timer = 0xffff - u16Microseconds;
+    TMR0L = u16Timer & 0x00ff;
+    TMR0H = (u8) ( (u16Timer & 0xff00) >> 8 );
+    
+    /*Clearing TMR0IF*/
     PIR3 &= 0x7f;
-    T0CON0 = 0x90;
+    
+    /*Enabling Timer*/
+    T0CON0 |= 0x80;
 }
 
 /*!----------------------------------------------------------------------------------------------------------------------
@@ -121,20 +129,34 @@ Promises:
 */
 void UserAppRun(void)
 {
-    /*static u8 u8Counter = 0x00;
-    u8Counter++;
-    u8 u8Temp = LATA;
-    u8Temp &= 0x80;
-    u8Temp |= (u8Counter & 0x3f);
-    LATA = u8Temp;*/
-    static u16 u16Toggle = 0x0000;
-    u16Toggle++;
-    if(u16Toggle == 0x1f4)
-    {
-        u16Toggle &= 0x0000;
-        LATA ^= 0x01; 
-    }
+    static u16 u16Delay = 0x0000;
     
+    /*variable used to index array*/
+    static int intLedState = 0;
+    
+    u8 au8Pattern [6] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20};
+    u16Delay++;
+    
+    /*After 500ms delay the pattern changes*/
+    if(u16Delay == 500)
+    {
+       u16Delay = 0x0000;
+       u8 u8Temp = LATA;
+       
+       /*Clearing 6 LSB's*/
+       u8Temp &= 0x80;
+       
+       /*Updating LATA to display next pattern*/
+       u8Temp |= au8Pattern[intLedState];
+       LATA = u8Temp;
+       intLedState++;
+       
+       /*Resets pattern to start repeating*/
+       if(intLedState == 6)
+       {
+           intLedState = 0;
+       }
+    }
 } /* end UserAppRun */
 
 

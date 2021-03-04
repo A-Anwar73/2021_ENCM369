@@ -27322,27 +27322,49 @@ void UserAppInitialize(void)
 # 101 "user_app.c"
 void TimeXus(u16 u16Microseconds)
 {
-    T0CON0 = 0x10;
-    TMR0L = u16Microseconds & 0x00ff;
-    TMR0H = (u16Microseconds & 0xff00) >> 8;
+
+    T0CON0 &= 0x7f;
+
+
+    u16 u16Timer = 0xffff - u16Microseconds;
+    TMR0L = u16Timer & 0x00ff;
+    TMR0H = (u8) ( (u16Timer & 0xff00) >> 8 );
+
+
     PIR3 &= 0x7f;
-    T0CON0 = 0x90;
+
+
+    T0CON0 |= 0x80;
 }
-# 122 "user_app.c"
+# 130 "user_app.c"
 void UserAppRun(void)
 {
+    static u16 u16Delay = 0x0000;
 
 
+    static int intLedState = 0;
+
+    u8 au8Pattern [6] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20};
+    u16Delay++;
 
 
-
-
-    static u16 u16Toggle = 0x0000;
-    u16Toggle++;
-    if(u16Toggle == 0x1f4)
+    if(u16Delay == 500)
     {
-        u16Toggle &= 0x0000;
-        LATA ^= 0x01;
-    }
+       u16Delay = 0x0000;
+       u8 u8Temp = LATA;
 
+
+       u8Temp &= 0x80;
+
+
+       u8Temp |= au8Pattern[intLedState];
+       LATA = u8Temp;
+       intLedState++;
+
+
+       if(intLedState == 6)
+       {
+           intLedState = 0;
+       }
+    }
 }
