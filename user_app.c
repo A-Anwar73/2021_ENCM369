@@ -150,12 +150,6 @@ void UserAppRun(void)
     static u8 u8ArrayIndex = 0x00;
     DAC1DATL = UserApp_au8sinTable[u8ArrayIndex += 4];
     
-    /* Rolling array Index back to zero */
-    /*if(u8ArrayIndex > 0xff)
-    {
-        u8ArrayIndex = 0x00;
-    }*/
-    
 } /* end UserAppRun */
 
 
